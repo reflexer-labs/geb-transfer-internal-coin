@@ -1,14 +1,14 @@
-pragma solidity ^0.8.6;
+pragma solidity 0.6.7;
 
 import "ds-test/test.sol";
 
-import "./GebTransferInternalCoin.sol";
+import "./InternalCoinRelayer.sol";
 
-contract GebTransferInternalCoinTest is DSTest {
-    GebTransferInternalCoin coin;
+contract InternalCoinRelayerTest is DSTest {
+    InternalCoinRelayer coin;
 
     function setUp() public {
-        coin = new GebTransferInternalCoin();
+        coin = new InternalCoinRelayer();
     }
 
     function testFail_basic_sanity() public {
