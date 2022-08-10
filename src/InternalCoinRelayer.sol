@@ -7,6 +7,7 @@ abstract contract SAFEEngineLike {
     function coinBalance(address) virtual public view returns (uint256);
 }
 abstract contract SystemCoinLike {
+    function approve(address, uint256) virtual external returns (bool);
     function balanceOf(address) virtual public view returns (uint256);
 }
 abstract contract CoinJoinLike {
@@ -31,6 +32,8 @@ contract InternalCoinRelayer {
         safeEngine    = SAFEEngineLike(safeEngine_);
         coinJoin      = CoinJoinLike(coinJoin_);
         systemCoin    = SystemCoinLike(coinJoin.systemCoin());
+        
+        systemCoin.approve(address(coinJoin), uint256(-1));
     }
 
     /**
